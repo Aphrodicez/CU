@@ -1,0 +1,7 @@
+c:/temp/exam.py
+d:/abc/TEMP/doc/temp.txt
+/Temp/doc/temp/quiz.xls
+temP/temp.py
+temp
+/temp
+/temp/
