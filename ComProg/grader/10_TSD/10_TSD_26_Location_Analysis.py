@@ -1,8 +1,8 @@
-d = {}
-
-name_list = []
+d = dict()
+name_list = list()
 
 n = int(input())
+
 for i in range(n):
     name, cities = input().split(': ')
     cities = cities.split(', ')
@@ -10,9 +10,10 @@ for i in range(n):
     name_list.append(name)
     d[name] = cities
 
-ans = []
+ans = list()
 
 keyID = input()
+
 for name in name_list:
     if keyID == name:
         continue

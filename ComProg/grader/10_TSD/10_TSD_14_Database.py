@@ -1,10 +1,22 @@
-courses_filename = input()
-teachers_filename = input()
-database_filename = input()
+def file2list(filename):
+    file = open(filename, 'r')
+    file_list = []
 
-courses = open(courses_filename, 'r').read().split()
-teachers = open(teachers_filename, 'r').read().split()
-database = open(database_filename, 'r').read().split()
+    while True:
+        s = file.readline().strip()
+        if len(s) == 0:
+            break
+        file_list.append(s)
+
+    return file_list
+
+courses_filename = input().strip()
+teachers_filename = input().strip()
+database_filename = input().strip()
+
+courses = file2list(courses_filename)
+teachers = file2list(teachers_filename)
+database = file2list(database_filename)
 
 courses_dict = dict()
 teachers_dict = dict()
@@ -20,7 +32,7 @@ for x in teachers:
 
 for x in database:
     idx_course, idx_teacher = x.split(',')
-    if idx_course not in courses_dict or idx_teacher not in teachers_dict:
+    if (idx_course not in courses_dict) or (idx_teacher not in teachers_dict):
         print('record error')
     else:
         print(courses_dict[idx_course] + ',' + teachers_dict[idx_teacher])
