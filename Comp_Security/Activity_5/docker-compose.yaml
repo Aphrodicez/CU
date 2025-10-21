@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  openssl-lab:
+    image: debian:stable-slim   # small, clean Linux base
+    container_name: openssl-lab
+    stdin_open: true
+    tty: true
+    command: bash
