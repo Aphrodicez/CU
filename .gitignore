@@ -131,3 +131,5 @@ dmypy.json
 /Private
 /Data-Structure/Private
 /Typescript
+
+.DS_Store
