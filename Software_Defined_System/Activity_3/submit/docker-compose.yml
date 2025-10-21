@@ -1,0 +1,38 @@
+services:
+  todo-webapp:
+    build: ../todo-webapp
+    container_name: todo-webapp
+    stdin_open: true
+    ports:
+      - 3000:3000
+    networks:
+      - todo-net
+  todo-service:
+    build: ../todo
+    container_name: todo-service
+    environment:
+      REDIS_HOST: redis
+      NOTIFICATION_HOST: notification-service
+    networks:
+      - todo-net
+  notification-service:
+    build: ../todo-notification
+    container_name: notification-service
+    environment:
+      REDIS_HOST: redis
+    networks:
+      - todo-net
+  api-gateway:
+    build: ../nginx
+    container_name: api-gateway
+    ports:
+      - 8000:8000
+    networks:
+      - todo-net
+  redis:
+    image: "redis"
+    container_name: redis
+    networks:
+      - todo-net
+networks:
+  todo-net: {}

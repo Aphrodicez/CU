@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-service-redis-deployment
+  labels:
+    app: todo-service-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-service-redis
+  template:
+    metadata:
+      labels:
+        app: todo-service-redis
+    spec:
+      containers:
+        - name: todo-service
+          image: natawut/todo-service:release-2.1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: REDIS_HOST
+              value: localhost
+
+        - name: redis
+          image: redis:7-alpine
